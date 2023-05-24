@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package anime;
+
+
+message Anime {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+
+}
+
+message GetAnimeRequest {
+  string anime_id = 1;
+}
+
+message GetAnimeResponse {
+  Anime anime = 1;
+}
+
+message SearchAnimeRequest {
+  string query = 1;
+}
+
+message SearchAnimeResponse {
+  repeated Anime anime = 1;
+}
+
+service AnimeService {
+  rpc GetAnime(GetAnimeRequest) returns (GetAnimeResponse);
+  rpc SearchAnime(SearchAnimeRequest) returns (SearchAnimesResponse);
+
+}
